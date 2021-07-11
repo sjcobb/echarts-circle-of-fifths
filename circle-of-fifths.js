@@ -11,7 +11,7 @@ const toneMidiNotes = Recording.tracks[0].notes;
 
 let counter = 1;
 const filteredNotes = toneMidiNotes.map((note) => {
-    note.fullNote = Tonal.Note.fromMidi(note.midi); // TODO: how to get flat notes instead of sharp
+    note.fullNote = Tonal.Note.fromMidi(note.midi);
     note.info = Tonal.Note.get(note.fullNote);
     note.octave = note.info.oct;
     note.count = 1;
@@ -37,7 +37,6 @@ setTimeout(() => {
     Tone.Transport.start();
 }, 3000);
 
-
 //////////////////
 // MAJOR CIRCLE //
 //////////////////
@@ -45,7 +44,7 @@ setTimeout(() => {
 let circleFifthsMajorId = document.getElementById('circle-of-fifths-major');
 const graphCircleFifthsMajor = echarts.init(circleFifthsMajorId, 'tech-blue');
 
-const circleOfFifthsMajorOrderedNotes = ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F']; ♭
+const circleOfFifthsMajorOrderedNotes = ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F'];
 const circleOfFifthsMinorOrderedNotes = ['Am', 'Em', 'Bm', 'F#m', 'C#m', 'G#m', 'D#m', 'Bbm', 'Fm', 'Cm', 'Gm', 'Dm'];
 
 const noteInactiveColor =  '#C1ECFD'; // Baby Blue
@@ -87,14 +86,13 @@ const majorOption = {
     },
     tooltip: {
         trigger: 'axis',
-        axisPointer: {            // Use axis to trigger tooltip
-            type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+        axisPointer: {
+            type: 'shadow',
         },
     },
     legend: {
         show: false,
-        type: 'plain',
-        // type: 'scroll',
+        type: 'plain', // 'scroll'
         data: ['Octave 0', 'Octave 1', 'Octave 2', 'Octave 3', 'Octave 4', 'Octave 5', 'Octave 6', 'Octave 7', 'Octave 8'],
     },
     grid: {},
@@ -174,7 +172,6 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 2',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[2],
         },
         {
@@ -189,7 +186,6 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 4',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[4],
         },
         {
@@ -197,7 +193,6 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 5',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[5],
         },
         {
@@ -205,7 +200,6 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 6',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[6],
         },
         {
@@ -213,7 +207,6 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 7',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[7],
         },
         {
@@ -221,15 +214,12 @@ const majorOption = {
             coordinateSystem: 'polar',
             name: 'Octave 8',
             stack: 'total',
-            // data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             data: fullCircleData[8],
         },
     ]
 };
 
-console.log('INITIAL -> majorOption: ', majorOption);
 graphCircleFifthsMajor.setOption(majorOption);
-
 
 //////////////////
 // MINOR CIRCLE //
@@ -240,8 +230,8 @@ const graphCircleFifthsMinor = echarts.init(circleFifthsMinorId, 'tech-blue');
 const minorOption = {
     tooltip: {
         trigger: 'axis',
-        axisPointer: {            // Use axis to trigger tooltip
-            type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+        axisPointer: {
+            type: 'shadow',
         },
     },
     legend: {
@@ -250,34 +240,21 @@ const minorOption = {
     },
     grid: {},
     polar: {
-        // https://echarts.apache.org/en/option.html#polar
-        // center = position of chart relative to center of container
-        // center: ['50%', '55%'], // needed when legend.show = true
         center: ['50%', '50%'],
-        // radius: ['70%', '80%'], // too narrow and too large gap in center
         radius: ['25%', '40%'],
     },
-    // yAxis: {
     radiusAxis: {
         type: 'value',
         show: false,
         axisTick: {
-            // https://echarts.apache.org/en/option.html#radiusAxis.axisTick
             show: false,
         },
     },
-    // xAxis: {
-    // radiusAxis: {
     angleAxis: {
         type: 'category',
-        // data: ['Am', 'Em', 'Bm', 'G♭m', 'D♭m', 'A♭m', 'E♭m', 'B♭m', 'Fm', 'Cm', 'Gm', 'Dm'],
-        // data: ['Am', 'Em', 'Bm', 'F♯m', 'C♯m', 'G♯m', 'D♯m', 'B♭m', 'Fm', 'Cm', 'Gm', 'Dm'],\
         data: circleOfFifthsMinorOrderedNotes,
         clockwise: true,
-        // startAngle: 90, // default
         startAngle: 105,
-        // inverse: true,
-        // z: 10,
     },
     series: [
         {
@@ -376,21 +353,18 @@ function updateChordDisplay(noteData, time) {
     const timeDifference = time - lastTime;
 
     if ((time - lastTime) < 1.0) { 
-        tempNotes.push(noteData.fullNote);  // flats
+        tempNotes.push(noteData.fullNote);
     } else {
         tempNotes = [];
     }
 
     if (tempNotes.length > 2 && tempNotes.length < 10) {
         let currentChord = Tonal.Chord.detect(tempNotes);
-
         if (currentChord.length) {
             let currentChordNoRoot = currentChord[0].slice(0, currentChord[0].length - 2);
-
             let currentChordSplit = currentChord[0].split('/');
             let currentChordInfo = Tonal.Chord.get(currentChordSplit[0]);
             let currentChordDisplayName = currentChordInfo.name;
-          
             if (currentChordDisplayName) {
                 currentChordInfo = currentChordInfo;
                 chordsPlayed.push(currentChordDisplayName);
@@ -400,10 +374,8 @@ function updateChordDisplay(noteData, time) {
             tempNotes = [];
         }
     }
-
     lastTime = time;
 }
-
 
 ////////////
 // UPDATE //
