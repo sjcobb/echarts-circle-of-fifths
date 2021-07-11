@@ -2,7 +2,7 @@
  *** ECHARTS CIRCLE OF FIFTHS - PIE *** 
 */
 
-import Recording from '../assets/recording/1_Bb_circle.js'; 
+import Recording from './assets/recording/1_Bb_circle.js'; 
 const toneMidiNotes = Recording.tracks[0].notes;
 
 //////////////////
