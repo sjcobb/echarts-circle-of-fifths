@@ -33,9 +33,9 @@ const recordingPart = new Tone.Part(function(time, datum){
 }, toneMidiNotes);
 recordingPart.start(0);
 
-setTimeout(() => {
-    Tone.Transport.start();
-}, 3000);
+// setTimeout(() => {
+//     Tone.Transport.start();
+// }, 3000);
 
 //////////////////
 // MAJOR CIRCLE //
