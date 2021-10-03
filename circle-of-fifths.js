@@ -450,7 +450,7 @@ elemStartSong.onclick = () => {
     Tone.Transport.start();
 }
 
-const elemStartSong = document.getElementById('stop-song');
-elemStartSong.onclick = () => {
+const elemStopSong = document.getElementById('stop-song');
+elemStopSong.onclick = () => {
     Tone.Transport.stop();
 }
