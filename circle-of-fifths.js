@@ -26,7 +26,7 @@ const filteredNotes = toneMidiNotes.map((note) => {
 Tone.Transport.bpm.value = 120;
 
 const polySynth = new Tone.PolySynth(Tone.Synth).toDestination();
-polySynth.volume.value = -8;
+polySynth.volume.value = -12;
 
 const recordingPart = new Tone.Part(function(time, datum){
     polySynth.triggerAttackRelease(datum.fullNote, "8n", time, datum.velocity);
