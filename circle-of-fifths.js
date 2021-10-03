@@ -33,9 +33,9 @@ const recordingPart = new Tone.Part(function(time, datum){
 }, toneMidiNotes);
 recordingPart.start(0);
 
-setTimeout(() => {
-    Tone.Transport.start();
-}, 3000);
+// setTimeout(() => {
+//     Tone.Transport.start();
+// }, 3000);
 
 //////////////////
 // MAJOR CIRCLE //
@@ -446,9 +446,14 @@ function labelFormatter(label, maxLength, lineBreakStyle = 'endline') {
 ///////////////////
 
 const elemStartSong = document.getElementById('start-song');
-elemStartSong.onclick = () => {
-    Tone.Transport.start();
-}
+// elemStartSong.onclick = () => {
+//     Tone.start()
+//     // Tone.Transport.start();
+// }
+elemStartSong.addEventListener('click', async () => {
+	await Tone.start();
+	console.log('audio is ready...');
+})
 
 const elemStopSong = document.getElementById('stop-song');
 elemStopSong.onclick = () => {
