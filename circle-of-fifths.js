@@ -453,6 +453,7 @@ const elemStartSong = document.getElementById('start-song');
 elemStartSong.addEventListener('click', async () => {
 	await Tone.start();
 	console.log('audio is ready...');
+    Tone.Transport.start();
 })
 
 const elemStopSong = document.getElementById('stop-song');
